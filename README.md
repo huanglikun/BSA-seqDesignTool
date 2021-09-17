@@ -1,49 +1,53 @@
 # BSA-seqDesignTool
-**BSA-seq Design Tool (BDT)** is an R program to facilitate the design of a suitable experiment for BSA-seq.
+**BSA-seq Design Tool** is a helper for designing a suitable experiment for BSA-seq.
 
 ## Content
 
-* [R packages required for BDT](#dep)
-    * [To install the required R packages](#install)
-* [To start BDT](#start)
-* [To quit BDT](#quit)
-* [Sidebar parameters required](#req)
-    * [BSA-seq design in given species](#given)
-        * [Setting of parameters](#par)
-    * [BSA-seq design in other species](#other)
-* [Tip](#tips)
+* [Introduction](#intro)
+* [Dependencies](#dep)
+* [Getting started](#start)
+* [Sidebar parameters explanation](#exp)
+    * [BSA-seq Design in known species](#known)
+    * [BSA-seq Design in other species](#other)
+* [Tips](#tips)
 
-## <a name="dep"></a>R packages required for BDT
 
-* shiny
-* shinydashboard
-* shinydashboardPlus
+## <a name="intro"></a>Introduction
+
+## <a name="dep"></a>Dependencies
+
+* R(^4.1.0)
+* shiny(^1.5.0)
+* shinydashboard(~0.7.1)
+* shinydashboardPlus(~0.7.5)
 * shinyBS
 * shinyjs
 * DT
 * rootSolve
 
-<a name="install"></a>**To install the required R packages**
+Note: The caret (^) means accept MINOR releases, and the tilde (~) means accept PATCH releases. For example, shiny(^1.5.0) means our tool depends shiny version 1.x.x up to 1.5.0, and shinydashboardPlus(~0.7.5) means our tool depends shinydashboardPlus version 0.7.x up to 0.7.5.
+
+**Install packages at a time**
 ```R
-install.packages(c("shiny","shinydashboard","shinydashboardPlus","shinyBS","shinyjs","DT","rootSolve"))
+install.packages(c("shiny","shinydashboard","shinyBS","shinyjs","DT","rootSolve"))
+packageurl <- "https://cran.r-project.org/src/contrib/Archive/shinydashboardPlus/shinydashboardPlus_0.7.5.tar.gz"
+install.packages(packageurl, repos=NULL, type="source")
 ```
 
-## <a name="start"></a>To start BDT
+## <a name="start"></a>Getting started
 
 ```
 library("shiny")
 runGitHub("BSA-seqDesignTool","huanglikun","main")
 ```
 
-## <a name="quit"></a>To quit BDT
+Press CTRL+C in **terminal** or ESC in **R console** to exit the APP.
 
-Press CTRL+C in **terminal** or ESC in **R console**.
+## <a name="exp"></a>Sidebar parameters explanation
 
-## <a name="req"></a>Sidebar parameters required
+### <a name="known"></a>BSA-seq Design in known species
 
-### <a name="given"></a>BSA-seq design in given species
-
-**Given species:**
+**Known species:**
 * *Arabidopsis*
 * Cucumber
 * Maize
@@ -54,15 +58,19 @@ Press CTRL+C in **terminal** or ESC in **R console**.
 * Wheat
 * Yeast
 
-<a name="par"></a>**Setting of parameters:**
-1. The parameters need to be set include population type, power or population size, QTL heritability, degree of dominance of the QTL, and pool proportion.
-2. Parameter setting can be done by clicking the radio buttons or dragging the slider widgets.
-3. Among the population types, **RIL** indicates recombinant inbred lines; **H/DH** indicates haploid (H) or doubled haploid (DH). All populations are derived from a cross between two pure-line parents (P<sub>1</sub> and P<sub>2</sub>).
-4. The results will be updated immediately after the values of the parameters are changed.
+**Steps:**
+1. Select the species.
+2. Select the population type. The **RIL** represent the "recombinant inbred lines", **H/DH** means "haploid(H) or doubled haploid(DH)", while **F<sub>2</sub>**, **F<sub>3</sub>**, **F<sub>4</sub>** are F<sub>k</sub> derived from a cross between two pure-line parents (*P*<sub>1</sub> and *P*<sub>2</sub>).
+3. Choose the given parameter (power or population size), then point or drag the sliding button to determine the value of the corresponding parameter.
+4. Setting the rest of the parameters, the results will be updated immediately after change the parameters.
 
-### <a name="other"></a>BSA-seq design in other species
+### <a name="other"></a>BSA-seq Design in other species
 
-Selection of the "Other" option in "Species" will need the information of gametal chromosome number and genome size (either in cM or in Mb). When the genome size is given in Mb, the information of physical distance in kb per cM is required.
+Select the "Other" option in "Species" will need further information, such as "Gametal chromosome number" in species, "Genome size information". Fill in each input box, the result table will also be updated quickly.
 
-## <a name="tips"></a>Tip
-**Fine tune for the slider widget**: Press left arrow or right arrow while select the slider widget with mouse.
+## <a name="tips"></a>Tips
+1. **Fine tune**: press left arrow or right arrow for step by step fine tune.
+2. **Normal tune**: long press left arrow or right arrow.
+
+## <a name="qa"></a>Q&A
+如果安装或者运行中出现问题，可能因为是R的版本或者依赖包的版本（特别是shinydashboardPlus）
