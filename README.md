@@ -73,4 +73,5 @@ Select the "Other" option in "Species" will need further information, such as "G
 2. **Normal tune**: long press left arrow or right arrow.
 
 ## <a name="qa"></a>Q&A
-如果安装或者运行中出现问题，可能因为是R的版本或者依赖包的版本（特别是shinydashboardPlus）
+1. Q: What can I do if I get an error during installation or running the APP?
+A: When you find anything wrong, please make sure that the version of shinydashboardPlus is below 0.7.5. Or, maybe changing another CRAN mirror will be fine.
